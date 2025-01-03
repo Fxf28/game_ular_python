@@ -26,6 +26,14 @@ class Snake:
         snake_segment.goto(position)
         self.snake.append(snake_segment)
 
+    def reset(self):
+        for snake_segment in self.snake[:]:
+            snake_segment.hideturtle()
+        self.snake.clear()
+        self.create_snake()
+        self.snake[0].shape("arrow")
+        self.head = self.snake[0]
+
     def growth(self):
         self.add_segment(self.snake[-1].position())
 
