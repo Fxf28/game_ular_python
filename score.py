@@ -8,7 +8,8 @@ class ScoreBoard(Turtle):
     def __init__(self):
         super().__init__()
         self.score = 0
-        self.high_score = 0
+        with open("../../OneDrive/Documents/data.txt") as data_highscore:
+            self.high_score = int(data_highscore.read())
         self.hideturtle()
         self.penup()
         self.color("white")
@@ -26,5 +27,7 @@ class ScoreBoard(Turtle):
     def reset(self):
         if self.score > self.high_score:
             self.high_score = self.score
+            with open("../../OneDrive/Documents/data.txt", mode="w") as data_highscore:
+                data_highscore.write(f"{self.score}")
         self.score = 0
         self.update_score()
